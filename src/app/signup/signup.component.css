@@ -1,0 +1,35 @@
+.container{
+    min-height:550px;
+}
+.signup-box{
+    width:auto;
+    height:auto;
+    border-radius:2px;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    margin:8px;
+    background-color: #fff;
+}
+.signup-form-section{
+    padding: 15px 15px;
+}
+.signup-title{
+    border-bottom: 2px solid tomato;
+    margin-bottom: 5px;
+    font-family:'Malgun Gothic';
+    color:#fff;
+    padding: 15px 15px;
+    background-color: #009788;
+}
+.signup-content-box{
+    margin-top: 25px;
+    font-family:'Malgun Gothic';
+}
+.signup-content-box h3 {
+    color:tomato;
+    font-size:24px;
+}
+.signup-content-box p {
+    color:grey;
+    font-size:14px;
+}

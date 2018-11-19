@@ -1,0 +1,30 @@
+.main-container {
+    background: #ccc;
+    width: 40%;
+    margin: auto;
+    padding: 10px 0 10px 0;
+}
+
+.planBox {
+    background: #ee5a3b;
+    padding: 5px;
+    padding-left: 15px;
+    margin-top: 20px;
+}
+.machineid-section {
+    margin: 20px;
+}
+
+.plan-section{
+    margin: 20px;
+}
+.plan-list {
+    width: 100%;
+}
+.width-50 {
+    width: 50%;
+    display: inline;
+}
+.submission{
+    text-align: center;
+}

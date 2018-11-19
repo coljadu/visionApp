@@ -1,0 +1,84 @@
+<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 cart-container"> 
+    <div class="row">
+        <div class="col-md-8 col-xs-12 col-sm-8 col-lg-8">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Cart Details</span>             
+              </h4>
+            <div class='empty-cart' [hidden]='cartDetails.length'>
+              <h6>Your Shopping Cart is empty</h6>
+            </div>
+            <table class="table table-bordered cart-table" [hidden]='!cartDetails.length'>
+              <thead>
+                <tr>
+                  <th class='table-col-number'>#</th>
+                  <th class='table-col-info'>Product</th>
+                  <th class='table-col-edit'>Duration</th>
+                  <th class='table-col-price'>Price</th>
+                  <th class='table-col-qnt'>Quantity</th>
+                  <th class='table-col-price'>Total</th>
+                  <th class='table-col-edit'></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let cartItem of cartDetails; let i = index'>
+                  <td class='table-col-number'>{{i+1}}</td>
+                  <td class='table-col-info'>{{cartItem.description}}</td>
+                  <td class='table-col-edit'>{{cartItem.duration}} (M)</td>
+                  <td class='table-col-price'>&#8377;{{cartItem.price}}</td>
+                  <td class='table-col-qnt'>
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="Quantity" aria-label="Quantity" aria-describedby="basic-addon2" [(ngModel)]='cartItem.quntity'>
+                      </div>
+                  </td>
+                  <td class='table-col-price'>&#8377;{{cartItem.price*cartItem.quntity}}</td>
+                  <td class='table-col-edit'>
+                    <button class="btn btn-danger" type="button">&times;</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="col=md-12">
+              <div class="float-right margin-top-30">
+                <button type="button" class="btn btn-outline-success">Checkout</button>
+              </div>
+            </div>
+          </div>
+        <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4">
+              
+                  <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge badge-secondary badge-pill">{{cartDetails.length}}</span>
+                  </h4>
+                  <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                      <div>
+                        <h6 class="my-0">Cart Total</h6>
+                      </div>
+                      <span class="text-muted">&#8377;12</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                      <div class="text-success">
+                        <h6 class="my-0">Promo code Discount</h6>
+                        <small>EXAMPLECODE</small>
+                      </div>
+                      <span class="text-success">-&#8377;5</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                      <span>Total (INR)</span>
+                      <strong>&#8377;20</strong>
+                    </li>
+                  </ul>
+        
+                  <form class="card p-2">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Promo code">
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">Redeem</button>
+                      </div>
+                    </div>
+                  </form>
+          </div>
+          
+    </div>
+   
+  </div>

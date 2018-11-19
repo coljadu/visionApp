@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <h3>Purchase Form</h3>
+    <div class="main-container">
+      <div class='machineid-section'>
+          <div>
+              <h4>Enter Machine ID</h4>
+          </div>
+          <input type="text" class="form-control" [(ngModel)]="machineId" name="machineId" placeholder='please Enter unique Machine ID' required>
+      </div>
+      <div class='plan-section'>
+          <div>
+              <h4>Choose a Plan</h4>
+          </div>
+          <select name="plan" id="planList" class='plan-list' [(ngModel)]='selectedPlan'>
+            <option value="select">select a plan</option>
+            <option *ngFor="let plan of Plans" [ngValue]="plan">{{plan.planName}}</option>
+          </select>
+          <div class="planBox">
+            <div class='row'>
+                <div class='col-sm-6'><b>Name:</b> {{selectedPlan.planName}}</div>
+                <div class='col-sm-6'><b>Duration(In Months):</b>{{selectedPlan.durationinMonths}}</div>
+            </div>
+            <div class='row'>
+                <span class='col-sm-6'><b>Price:</b> {{selectedPlan.planPrice}}</span>
+                <span class='col-sm-6'><b>Status:</b> {{selectedPlan.planName}}</span>
+            </div>  
+          </div>
+      </div>  
+      <div class="submission">
+          <button class='btn btn-primary' (click)='intitPurchase()'>Submit</button>
+      </div>
+        
+       
+    </div>
+    
+
+</div>
