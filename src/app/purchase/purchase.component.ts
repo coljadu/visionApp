@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { environment } from "../../environments/environment";
 import { AuthService } from "../core/services/auth.service";
+import { ShareDataService } from "../core/services/share-data.service";
 
 @Component({
   selector: "app-purchase",
@@ -19,7 +20,8 @@ export class PurchaseComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private shareDataService: ShareDataService
   ) {}
 
   ngOnInit() {
@@ -50,8 +52,8 @@ export class PurchaseComponent implements OnInit {
       )
       .subscribe(
         res => {
-          console.log(res);
-          this.router.navigate(["/cart", { orderId: res.orderId }]);
+          this.shareDataService.storeResponse(res);
+          this.router.navigate(["/cart"]);
         },
         err => {
           console.log(err);
