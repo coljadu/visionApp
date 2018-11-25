@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { environment } from "../../environments/environment";
 import { AuthService } from "../core/services/auth.service";
-import { ShareDataService } from "../core/services/share-data.service";
+import { CartService } from "../core/services/cart.service";
 
 @Component({
   selector: "app-purchase",
@@ -21,7 +21,7 @@ export class PurchaseComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private authService: AuthService,
-    private shareDataService: ShareDataService
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -36,28 +36,14 @@ export class PurchaseComponent implements OnInit {
         this.Plans = res;
       });
   }
+  
   intitPurchase() {
-    var puchasedData = {};
-    puchasedData["machineId"] = this.machineId;
-    puchasedData["planId"] = 1;
-    let config = this.authService.getCofigObj();
-    console.log("purachses data", puchasedData);
-    console.log("config data", config);
+    var purchasedData = {};
+    purchasedData["machineId"] = this.machineId;
+    purchasedData["planId"] = 1;
 
-    this.http
-      .post(
-        environment.api_url + "/customers/initiateOrder",
-        puchasedData,
-        config
-      )
-      .subscribe(
-        res => {
-          this.shareDataService.storeResponse(res);
-          this.router.navigate(["/cart"]);
-        },
-        err => {
-          console.log(err);
-        }
-      );
+    this.cartService.addToCart(this.machineId, this.selectedPlan);
+
+    this.router.navigate(["/cart"]);
   }
 }

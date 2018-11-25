@@ -19,19 +19,23 @@
             <th class="table-col-info">Product</th>
             <th class="table-col-edit">Duration</th>
             <th class="table-col-price">Price</th>
+            <th class="table-col-price">Remove</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let cartItem of cartDetails; let i = index">
             <td class="table-col-number">{{ i + 1 }}</td>
             <td class="table-col-info">
-              {{ cartItem.planDetails.description }}
+              {{ cartItem.machineId }}
             </td>
             <td class="table-col-edit">
-              {{ cartItem.planDetails.durationinMonths }} (Months)
+              {{ cartItem.planDetail.durationinMonths }} (Months)
             </td>
             <td class="table-col-price">
-              &#8377;{{ cartItem.planDetails.planPrice }}
+              &#8377;{{ cartItem.planDetail.planPrice }}
+            </td>
+            <td class="table-col-price">
+              <span (click)="removeItem(cartItem.machineId)" style="cursor:pointer; text-decoration:blue;">del</span>
             </td>
           </tr>
         </tbody>

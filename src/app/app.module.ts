@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
   },
   {
     path: 'plans',
@@ -67,7 +67,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   providers: [AuthService, AuthGuardService],
