@@ -60,13 +60,15 @@ export class CartComponent implements OnInit {
             this.transactionDetails.ttype +
             "&prodid=" +
             this.transactionDetails.prodid +
-            "&amt=0&txncurr=" +
+            "&amt=" +
+            this.transactionDetails.amt +
+            "&txncurr=" +
             this.transactionDetails.txncurr +
-            "&txnscamt=0.0&clientcode=" +
-            // this.transactionDetails.txnscamt +
+            "&txnscamt=0&clientcode=" +
             this.transactionDetails.clientcode +
-            "&txnid=30&date=" +
-            //this.transactionDetails.txnid +
+            "&txnid=" +
+            this.transactionDetails.txnid +
+            "&date=" +
             this.transactionDetails.date +
             "&custacc=" +
             this.transactionDetails.custacc +
@@ -74,16 +76,12 @@ export class CartComponent implements OnInit {
             this.transactionDetails.udf1 +
             "&udf9=" +
             this.udf9 +
-            "&ru=" +
-            this.transactionDetails.ru +
-            "&udf2=" +
+            "&ru=http://localhost:3000/payment?data&udf2=" +
             this.transactionDetails.udf2 +
             "&udf3=" +
             this.transactionDetails.udf3 +
-            "&signature=dd305959379d5520406ef33056ea008ad30f8413ebdb518163be61aa2d8a3100d7b0209c6477fe0e49ed8430a5d2119c4d273921f95a09e7ec55e2c7084973e0";
-          //this.transactionDetails.signature;
-          console.log(redirectUrl);
-          debugger;
+            "&signature=" +
+            this.transactionDetails.signature;
           window.open(redirectUrl, "_self");
         },
         err => {

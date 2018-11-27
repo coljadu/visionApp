@@ -1,53 +1,53 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { CartComponent } from './cart/cart.component';
-import { PlansComponent } from './plans/plans.component';
-import { PurchaseComponent } from './purchase/purchase.component';
-import {AuthService} from './core/services/auth.service';
-import {AuthGuardService} from './auth-guard.service';
-
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { RouterModule, Routes } from "@angular/router";
+import { AppComponent } from "./app.component";
+import { LoginComponent } from "./login/login.component";
+import { SignupComponent } from "./signup/signup.component";
+import { HomeComponent } from "./home/home.component";
+import { HeaderComponent } from "./header/header.component";
+import { FooterComponent } from "./footer/footer.component";
+import { CartComponent } from "./cart/cart.component";
+import { PlansComponent } from "./plans/plans.component";
+import { PurchaseComponent } from "./purchase/purchase.component";
+import { AuthService } from "./core/services/auth.service";
+import { AuthGuardService } from "./auth-guard.service";
+import { SuccessComponent } from "./success/success.component";
 
 const appRoutes: Routes = [
   {
-    path: 'login',
+    path: "login",
     component: LoginComponent
   },
   {
-    path: 'signup',
+    path: "signup",
     component: SignupComponent
   },
   {
-    path: 'home',
+    path: "home",
     component: HomeComponent
   },
   {
-    path: 'cart',
+    path: "cart",
     component: CartComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService]
   },
   {
-    path: 'plans',
+    path: "plans",
     component: PlansComponent
   },
   {
-    path: 'purchase',
+    path: "purchase",
     component: PurchaseComponent
   },
-  { path: '',
-    redirectTo: '/signup',
-    pathMatch: 'full'
-  }
+  {
+    path: "success",
+    component: SuccessComponent
+  },
+  { path: "", redirectTo: "/signup", pathMatch: "full" }
 ];
-
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ const appRoutes: Routes = [
     FooterComponent,
     CartComponent,
     PlansComponent,
-    PurchaseComponent
+    PurchaseComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -73,4 +74,4 @@ const appRoutes: Routes = [
   providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
