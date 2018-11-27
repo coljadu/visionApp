@@ -1,5 +1,4 @@
 <div class="container">  
- 
   <div class="row">
     <div class="col-md-7">
       <div class="signup-box">
@@ -7,54 +6,62 @@
           <h3>Create an account!</h3>
         </div>
       <div class="signup-form-section">
-        <form (ngSubmit)="registerUser()" #signupForm="ngForm">
+        <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input type="text" class="form-control" [(ngModel)]="user.firstName" name="firstName" required>
-                <!-- <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
-                  <div *ngIf="firstName.errors.required">Fisrt Name is required.</div>
-                </div> -->
+                <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                  <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                </div>
               </div> 
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastName" required>
-                <!-- <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
-                  <div *ngIf="lastName.errors.required">Last Name is required.</div>
-                </div> -->
+                <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                  <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                </div>
               </div>
             </div>
-          </div>
-            
+          </div>       
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" [(ngModel)]="user.email" name="email" required>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" [(ngModel)]="user.password" name="password" required>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
               </div>
             </div>
           </div>   
-         
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label for="userType">User Type</label>
-                <input type="text" class="form-control" [(ngModel)]="user.userType" name="userType" required>
+                <select class="form-control"  formControlName="userType">
+                  <option value="CUSTOMER">Customer</option>
+                </select>
               </div> 
             </div>
             <div class="col-md-6"> 
               <div class="form-group">
-              <label for="contactNumber">Contact Number</label>
-              <input type="text" class="form-control" [(ngModel)]="user.contactNo" name="contactNumber" required>
+              <label for="contactNo">Contact Number</label>
+              <input type="text" class="form-control" formControlName="contactNo">
             </div>
             </div>
           </div>         
@@ -62,7 +69,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="country">Country</label>
-                        <select class="form-control" name="country" [(ngModel)]="user.countryId" required>
+                        <select class="form-control" formControlName="countryId">
                           <option value="1">India</option>
                         </select>
                   </div>
@@ -70,7 +77,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="state">State</label>
-                        <select class="form-control" name="state" [(ngModel)]="user.stateId" ng-change="" required>
+                        <select class="form-control" formControlName="stateId">
                           <option *ngFor="let state of stateList"  value="{{state.id}}">{{state.name}}</option>
                         </select>
                   </div>
@@ -78,7 +85,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="city">City</label>
-                        <select  class="form-control" name="city" [(ngModel)]="user.cityId" required>
+                        <select  class="form-control" formControlName="cityId">
                           <option *ngFor="let city of cityList" value="{{city.id}}">{{city.name}}</option>
                         </select>
                   </div> 
@@ -88,12 +95,12 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label for="zipCode">zipCode</label>
-                    <input type="text" class="form-control" [(ngModel)]="user.zipCode" name="zipCode" required>
+                    <input type="text" class="form-control" formControlName="zipCode">
                   </div>
             </div>
           </div>         
           <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="!signupForm.form.valid">Save</button>
+            <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="loading">Save</button>
           </div> 
           <div>
             <p>Already have account with us ? <a routerLink="/login">Login here</a> </p>

@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { NgIf } from "@angular/common";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { environment } from "../../environments/environment";
+import { AuthService } from "../core/services/auth.service";
 
 @Component({
   selector: "app-signup",
@@ -9,26 +12,66 @@ import { NgIf } from "@angular/common";
   styleUrls: ["./signup.component.css"]
 })
 export class SignupComponent implements OnInit {
-  user = {};
+  registerForm: FormGroup;
+  submitted = false;
+  user: any = {};
   stateList = [{ id: 1, name: "madhya pradesh" }];
-
   cityList = [{ id: 1, name: "Bhopal" }];
-  constructor(private http: HttpClient, private router: Router) {}
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.getStatesList();
+    this.registerForm = this.formBuilder.group({
+      firstName: ["", Validators.required],
+      lastName: ["", Validators.required],
+      email: ["", [Validators.required, Validators.email]],
+      password: ["", [Validators.required, Validators.minLength(6)]],
+      userType: ["", Validators.required],
+      contactNo: ["", [Validators.required, Validators.minLength(10)]],
+      countryId: ["", Validators.required],
+      stateId: ["", Validators.required],
+      cityId: ["", Validators.required],
+      zipCode: ["", [Validators.required, Validators.minLength(6)]]
+    });
   }
+  get f() {
+    return this.registerForm.controls;
+  }
+
   registerUser() {
-    console.log(this.user);
-    // this.http.post('localhost:8080/vsign-api/signup/register', this.user)
-    //   .subscribe(res => {
-    //     console.log('signup');
-    //       this.router.navigate(['/home']);
-    //     }, (err) => {
-    //       console.log(err);
-    //     }
-    //   );
-    this.router.navigate(["/home"]);
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+      return;
+    }
+    console.log(this.registerForm.value);
+    this.user.firstName = this.registerForm.value.firstName;
+    this.user.lastName = this.registerForm.value.lastName;
+    this.user.email = this.registerForm.value.email;
+    this.user.password = this.registerForm.value.password;
+    this.user.userType = this.registerForm.value.userType;
+    this.user.contactNo = this.registerForm.value.contactNo;
+    this.user.countryId = this.registerForm.value.countryId;
+    this.user.stateId = this.registerForm.value.stateId;
+    this.user.cityId = this.registerForm.value.cityId;
+    this.user.zipCode = this.registerForm.value.zipCode;
+    this.http
+      .post(environment.api_url + "/signup/register", this.user)
+      .subscribe(
+        res => {
+          console.log("signup");
+          this.authService.saveUser(res);
+          this.router.navigate(["/home"]);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
   getStatesList() {
     // this.http.get(environment.api_url+'/location/country/1/states')

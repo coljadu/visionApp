@@ -15,6 +15,7 @@ import { PurchaseComponent } from "./purchase/purchase.component";
 import { AuthService } from "./core/services/auth.service";
 import { AuthGuardService } from "./auth-guard.service";
 import { SuccessComponent } from "./success/success.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const appRoutes: Routes = [
   {
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
