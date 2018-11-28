@@ -1,12 +1,16 @@
-.vision-logo {
-  
-}
-
-.nav-item-group{
-    margin-left: 8%;
-    font-size: 20px;
+.nav-item-group {
+  margin-left: 8%;
+  font-size: 20px;
 }
 
 .nav-item {
-    margin-left: 10%;
+  margin-left: 10%;
+}
+
+header {
+  background: #565656;
+}
+
+.active-menu {
+  color: rgba(255, 255, 255, 0.75);
 }

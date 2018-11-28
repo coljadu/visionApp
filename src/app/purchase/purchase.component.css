@@ -1,30 +1,30 @@
 .main-container {
-    background: #ccc;
-    width: 40%;
-    margin: auto;
-    padding: 10px 0 10px 0;
+  background: #bd8c7d;
+  width: 40%;
+  margin: auto;
+  padding: 10px 0 10px 0;
 }
 
 .planBox {
-    background: #ee5a3b;
-    padding: 5px;
-    padding-left: 15px;
-    margin-top: 20px;
+  background: #fff;
+  padding: 5px;
+  padding-left: 15px;
+  margin-top: 20px;
 }
 .machineid-section {
-    margin: 20px;
+  margin: 20px;
 }
 
-.plan-section{
-    margin: 20px;
+.plan-section {
+  margin: 20px;
 }
 .plan-list {
-    width: 100%;
+  width: 100%;
 }
 .width-50 {
-    width: 50%;
-    display: inline;
+  width: 50%;
+  display: inline;
 }
-.submission{
-    text-align: center;
+.submission {
+  text-align: center;
 }

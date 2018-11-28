@@ -27,4 +27,7 @@ export class AuthService {
   isLoggedIn() {
     return localStorage.getItem("user") ? true : false;
   }
+  getUserName() {
+    return JSON.parse(localStorage.getItem("user")).full_name;
+  }
 }

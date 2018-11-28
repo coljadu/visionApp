@@ -16,6 +16,7 @@ import { AuthService } from "./core/services/auth.service";
 import { AuthGuardService } from "./auth-guard.service";
 import { SuccessComponent } from "./success/success.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { ButtonComponent } from './core/common/button/button.component';
 
 const appRoutes: Routes = [
   {
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
     CartComponent,
     PlansComponent,
     PurchaseComponent,
-    SuccessComponent
+    SuccessComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

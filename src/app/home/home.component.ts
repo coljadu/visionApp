@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
-import { NgIf } from "@angular/common";
+import { AuthService } from "../core/services/auth.service";
 
 @Component({
   selector: "app-home",
@@ -11,23 +11,17 @@ import { NgIf } from "@angular/common";
 })
 export class HomeComponent implements OnInit {
   name = "";
-  plans = [];
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
-    //this.getUserInfo();
-    this.getPlanInfo();
+    this.getUserInfo();
   }
 
   getUserInfo() {
-    this.name = "Ram";
-  }
-  getPlanInfo() {
-    this.http
-      .get(environment.api_url + "/product/plans?status=ACTIVE")
-      .subscribe(res => {
-        //console.log(res.data);
-        //this.plans = res.data;
-      });
+    this.name = this.authService.getUserName();
   }
 }

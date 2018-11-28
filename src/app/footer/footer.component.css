@@ -1,13 +1,14 @@
-.footer{    
-    left: 0;
-    bottom: 0;    
-    width:100%;
-    background-color: tomato;
-    clear:left;    
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #565656;
+  clear: left;
 }
-.text-center{
-    text-align:center;   
-    padding: 15px;
-    margin: 0px;
-    color:#fff;
+.text-center {
+  text-align: center;
+  padding: 15px;
+  margin: 0px;
+  color: #fff;
 }
