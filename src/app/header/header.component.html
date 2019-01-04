@@ -9,7 +9,7 @@
       />
     </a>
     <ul class="navbar-nav nav-item-group">
-      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+      <li class="nav-item">
         <a
           class="nav-link"
           routerLink="/home"
@@ -18,7 +18,7 @@
           >Dashboard</a
         >
       </li>
-      <li class="nav-item" *ngIf="authService.isLoggedIn()">
+      <li class="nav-item">
         <a
           class="nav-link"
           routerLink="/purchase"

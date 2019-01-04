@@ -11,7 +11,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class SuccessComponent implements OnInit {
   response = {};
-  successData = {};
+  successData = <any>{};
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,

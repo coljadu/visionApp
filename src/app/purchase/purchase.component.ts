@@ -14,7 +14,7 @@ import { ShareDataService } from "../core/services/share-data.service";
 export class PurchaseComponent implements OnInit {
   purchaseData = {};
   Plans: any = [];
-  selectedPlan = {};
+  selectedPlan = <any>{};
   machineId = "";
 
   constructor(
