@@ -2,5 +2,7 @@ body {
   background-color: #f8f9fa;
 }
 .main-contain {
-  min-height: 400px;
+  min-height: 415px;
+  margin-bottom: 15vh;
+  margin-top: 5vh;
 }

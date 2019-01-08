@@ -16,7 +16,7 @@ import { AuthService } from "./core/services/auth.service";
 import { AuthGuardService } from "./auth-guard.service";
 import { SuccessComponent } from "./success/success.component";
 import { ReactiveFormsModule } from "@angular/forms";
-import { ButtonComponent } from './core/common/button/button.component';
+import { ButtonComponent } from "./core/common/button/button.component";
 
 const appRoutes: Routes = [
   {
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     path: "success",
     component: SuccessComponent
   },
-  { path: "", redirectTo: "/signup", pathMatch: "full" }
+  { path: "", redirectTo: "/login", pathMatch: "full" }
 ];
 
 @NgModule({

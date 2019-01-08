@@ -76,7 +76,7 @@ export class CartComponent implements OnInit {
             this.transactionDetails.udf1 +
             "&udf9=" +
             this.udf9 +
-            "&ru=http://localhost:3000/payment?data&udf2=" +
+            "&ru=http://54.211.3.42:3000/payment?data&udf2=" +
             this.transactionDetails.udf2 +
             "&udf3=" +
             this.transactionDetails.udf3 +
